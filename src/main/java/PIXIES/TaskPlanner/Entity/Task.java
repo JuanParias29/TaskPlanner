@@ -14,11 +14,11 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private String title;
-    private String description;
+    private String Title;
+    private String Description;
 
     @Enumerated(EnumType.STRING)
-    private TaskStatus status;
+    private TaskStatus Status;
 
     /*
     posibles funcionalidades futuras
