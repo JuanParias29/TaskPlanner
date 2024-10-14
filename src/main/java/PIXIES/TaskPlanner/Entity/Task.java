@@ -20,7 +20,6 @@ public class Task {
     @Enumerated(EnumType.STRING)
     private TaskStatus status;
 
-
     /*
     posibles funcionalidades futuras
     private String priority;
