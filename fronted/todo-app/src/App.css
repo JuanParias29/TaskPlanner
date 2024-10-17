@@ -1,0 +1,267 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilo general del body */
+body {
+  background-image: url("https://static.vecteezy.com/system/resources/previews/013/151/035/non_2x/light-blue-and-purple-gradient-background-free-vector.jpg");
+  display: flex; /* Usar flexbox para centrar contenido */
+  justify-content: center; /* Centrar horizontalmente */
+  align-items: flex-start; /* Alinear al inicio verticalmente */
+  height: 100vh; /* Altura total de la ventana */
+  padding-top: 20px; /* Espacio en la parte superior */
+}
+
+/* Estilo del contenedor principal de las tareas */
+.TodoWrapper {
+  display: flex;
+  height: 100vh; /* Hacer que la altura ocupe toda la ventana */
+}
+
+.left-container {
+  width: 30%; /* Ancho de la sección para agregar tareas */
+  padding: 20px;
+  border-right: 2px solid #ccc; /* Línea divisoria a la derecha */
+  position: fixed;
+  left: 50px;
+  top:200px;
+
+}
+
+.right-container {
+  width: 100%; /* Ancho de la sección para las tareas */
+  padding: 30px;
+  display: flex;
+  flex-direction: column; /* Apilar el filtro y las tareas verticalmente */
+  position: absolute;
+  right: 0px;
+  left: 550px;
+  top:20px;
+  width: 1010px;      /* Establece un ancho fijo */
+
+
+}
+
+
+
+.tasks-container {
+  display: flex;
+  flex-direction: column; /* Apilar tareas verticalmente */
+  flex-grow: 1; /* Permitir que el contenedor de tareas crezca */
+  overflow-y: auto; /* Añadir desplazamiento vertical si es necesario */
+}
+
+/* Título principal */
+h1 {
+  font-size: 2.5em; /* Tamaño del título */
+  color: #e2d5e6; /* Color lila oscuro para el texto */
+  text-align: center; /* Centrar el título */
+  margin-bottom: 30px; /* Espaciado debajo del título */
+}
+
+/* Estilo general del contenedor de la tarea individual */
+
+
+.Todo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%; /* Asegurar que ocupe todo el ancho */
+  max-width: 100%; /* Asegurar que no exceda el contenedor */
+  padding: 15px;
+  background-color: #f6f0ff; /* Color de fondo lila claro para las tareas */
+  margin: 10px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  position: relative; /* Añadir posición relativa para el contenedor */
+}
+
+/* Contenedor de acciones y texto de la tarea */
+.task-actions {
+  display: flex;
+  align-items: center;
+}
+
+
+/* Estilo del texto de la tarea */
+.task-text p {
+  margin: 0;
+  font-size: 1.1em;
+  color: #5c4e83; /* Color lila oscuro para el texto de la tarea */
+}
+
+.description-text {
+  margin-top: 5px;
+  font-size: 0.9em;
+  color: #888; /* Color gris para la descripción */
+}
+
+/* Cuadro vacío para el check */
+.check-container {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #6f4c9e; /* Color del borde lila */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-right: 10px;
+  border-radius: 3px;
+}
+
+/* Estilo del cuadro cuando está marcado */
+.check-container.checked {
+  background-color: #6f4c9e; /* Color de fondo lila al marcar */
+  border-color: #6f4c9e; /* Color del borde al marcar */
+}
+
+/* Ocultar el ícono de check si la tarea no está completada */
+.check-icon {
+  color: #6f4c9e; /* Color del ícono en lila */
+  font-size: 1em; /* Tamaño del ícono */
+}
+
+/* Estilo para las tareas completadas (tachado) */
+.completed {
+  text-decoration: line-through;
+  color: #888; /* Color gris claro para el texto tachado */
+}
+
+.incompleted {
+  color: #333; /* Color negro para tareas incompletas */
+}
+
+/* Estilo para los botones de editar y eliminar */
+.edit-icon{
+  margin-left: 10px;
+  cursor: pointer;
+  position: absolute; /* Cambiar a posición absoluta */
+  bottom: 10px; /* Ajusta según el espaciado deseado */
+  right: 40px; /* Ajusta según el espaciado deseado */
+}
+
+.delete-icon{
+  margin-left: 10px;
+  cursor: pointer;
+  position: absolute; /* Cambiar a posición absoluta */
+  bottom: 10px; /* Ajusta según el espaciado deseado */
+  right: 10px; /* Ajusta según el espaciado deseado */
+}
+
+.edit-icon:hover {
+  color: #c1a7e5; /* Color lila claro para el hover del ícono de editar */
+}
+
+.delete-icon:hover {
+  color: #e57373; /* Color rojo claro para el hover del ícono de eliminar */
+}
+
+/* Estilo del formulario para añadir una nueva tarea */
+.TodoForm {
+  flex: 1; /* Hacer que el formulario ocupe todo el espacio restante */
+  padding: 0; /* Eliminar el padding del formulario */
+  display: flex; /* Usar flexbox para el contenido */
+  flex-direction: column; /* Apilar elementos verticalmente */
+  align-items: flex-start; /* Alinear los elementos al inicio a la izquierda */
+  width: 100%; /* Asegurarse de que el formulario ocupa todo el ancho */
+  margin: 0; /* Eliminar márgenes */
+
+}
+
+.todo-input,
+.todo-textarea {
+  padding: 15px; /* Aumentar el padding */
+  font-size: 1.5em; /* Aumentar el tamaño de la fuente para mayor visibilidad */
+  border: 2px solid #ccc; /* Borde gris */
+  border-radius: 5px; /* Bordes redondeados */
+  width: calc(100% - 10px); /* Asegurarse de que ocupa casi todo el ancho, restando el borde */
+  margin-bottom: 15px; /* Añadir margen entre los campos */
+}
+
+.todo-textarea {
+  padding: 15px; /* Aumentar el padding */
+  font-size: 1.1em;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  width: 100%;  /* Asegúrate de que ocupa todo el ancho disponible */
+  height: 120px;  /* Aumentar altura para la descripción */
+  resize: none;  /* Desactivar la redimensión del textarea */
+  margin-bottom: 10px;
+}
+
+/* Estilo específico para el textarea */
+.todo-textarea {
+  height: 120px; /* Aumentar altura para la descripción */
+  resize: none; /* Desactivar la redimensión del textarea */
+}
+
+
+.todo-btn {
+  padding: 15px 20px; /* Aumentar el padding */
+  font-size: 1.5em; /* Aumentar el tamaño de la fuente del botón */
+  background-color: #6f4c9e; /* Color de fondo lila del botón */
+  color: white; /* Color del texto */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cambiar cursor a puntero */
+  width: 100%; /* Asegurarse de que ocupa todo el ancho disponible */
+}
+
+
+.todo-btn:hover {
+  background-color: #5c4e83; /* Color de fondo lila oscuro al pasar el mouse */
+}
+
+.filter {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px; /* Espacio debajo del filtro */
+  color: white;
+}
+
+.filter label {
+  margin-right: 10px; /* Espacio entre la etiqueta y el select */
+}
+
+.filter select {
+  padding: 10px;
+  font-size: 1em;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Estilo responsivo para pantallas pequeñas */
+@media (max-width: 768px) {
+  .TodoWrapper {
+    padding: 15px;
+    flex-direction: column; /* Cambiar la dirección para pantallas pequeñas */
+  }
+
+  .left-container, .right-container {
+    width: 100%; /* Hacer que ambos contenedores ocupen todo el ancho */
+    border: none; /* Quitar la línea divisoria para pantallas pequeñas */
+  }
+
+  .Todo {
+    max-width: 100%;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  .todo-input, .todo-textarea {
+    font-size: 1em;
+  }
+
+  .todo-btn {
+    font-size: 1em;
+  }
+}
+
+
