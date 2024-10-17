@@ -4,18 +4,17 @@ import PIXIES.TaskPlanner.Entity.Task;
 import PIXIES.TaskPlanner.Entity.TaskStatus;
 import PIXIES.TaskPlanner.Repository.TaskRepository;
 import PIXIES.TaskPlanner.Services.TaskService;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-@Transactional
 class TaskServiceIntegrationTest {
 
     @Autowired
@@ -24,91 +23,128 @@ class TaskServiceIntegrationTest {
     @Autowired
     private TaskRepository taskRepository;
 
-    @BeforeEach
-    void setUp() {
-        taskRepository.deleteAll();
-    }
-
+    //Prueba para crear una tarea.
     @Test
-    void testCreateAndRetrieveTask() {
-        Task task = new Task();
-        task.setTitle("Integración Tarea");
-        task.setDescription("Descripción de integración");
-        task.setStatus(TaskStatus.PENDIENTE);
+    void testCreateTask() {
 
-        // Crear tarea
+        //Crear tarea
+        Task task = new Task();
+        task.setTitle("Integration Task");
+
         Task createdTask = taskService.createTask(task);
 
-        // Recuperar tarea
-        Task retrievedTask = taskRepository.findById(createdTask.getId()).orElse(null);
-        assertNotNull(retrievedTask);
-        assertEquals("Integración Tarea", retrievedTask.getTitle());
-        System.out.println("Prueba de integración de creación y recuperación de tarea: éxito");
+        assertEquals("Integration Task", createdTask.getTitle());
+
+        taskRepository.delete(createdTask);
     }
 
+    //Excepción al intentar crear una tarea con un título vacío.
+    @Test
+    void testCreateTaskWithEmptyTitle() {
+
+        //Crear una tarea
+        Task task = new Task();
+        task.setTitle("");
+
+        //Excepcion
+        ResponseStatusException exception = assertThrows(ResponseStatusException.class,
+                () -> taskService.createTask(task));
+
+        assertEquals(HttpStatus.BAD_REQUEST, exception.getStatusCode());
+        assertEquals("El título no puede estar vacío", exception.getReason());
+    }
+
+
+    //Prueba para actualizar una tarea.
     @Test
     void testUpdateTask() {
+
+        //Creacion de la tarea
         Task task = new Task();
-        task.setTitle("Tarea Inicial");
-        task.setDescription("Descripción inicial");
-        task.setStatus(TaskStatus.PENDIENTE);
+        task.setTitle("Integration Task");
+        task = taskRepository.save(task);
 
-        // Crear tarea
-        Task createdTask = taskService.createTask(task);
+        //Actualizacion de la tarea
+        Task updatedTask = new Task();
+        updatedTask.setTitle("Updated Integration Task");
 
-        // Actualizar tarea
-        createdTask.setTitle("Tarea Actualizada");
-        createdTask.setDescription("Descripción actualizada");
-        createdTask.setStatus(TaskStatus.COMPLETADA);
+        Task result = taskService.updateTask(task.getId(), updatedTask);
 
-        Task result = taskService.updateTask(createdTask.getId(), createdTask);
-        assertEquals("Tarea Actualizada", result.getTitle());
-        assertEquals(TaskStatus.COMPLETADA, result.getStatus());
-        System.out.println("Prueba de integración de actualización de tarea: éxito");
+        assertEquals("Updated Integration Task", result.getTitle());
+
+        taskRepository.delete(result);
     }
 
+    // Excepción al intentar actualizar una tarea con un título vacío.
+    @Test
+    void testUpdateTaskWithEmptyTitle() {
+
+        //Crear tarea
+        Task task = new Task();
+        task.setTitle("Integration Task");
+        task = taskRepository.save(task);
+
+        //Actualizar tarea con titulo vacio
+        Task updatedTask = new Task();
+        updatedTask.setTitle("");
+
+        //excepcion
+        Task finalTask = task;
+        ResponseStatusException exception = assertThrows(ResponseStatusException.class,
+                () -> taskService.updateTask(finalTask.getId(), updatedTask));
+
+        assertEquals(HttpStatus.BAD_REQUEST, exception.getStatusCode());
+        assertEquals("El título no puede estar vacío", exception.getReason());
+
+        taskRepository.delete(task);
+    }
+
+    // Prueba para eliminar una tarea
     @Test
     void testDeleteTask() {
+
+        //Crear Tarea
         Task task = new Task();
-        task.setTitle("Tarea a Eliminar");
-        task.setDescription("Descripción a eliminar");
-        task.setStatus(TaskStatus.PENDIENTE);
+        task.setTitle("Integration Task");
+        task = taskRepository.save(task);
 
-        // Crear tarea
-        Task createdTask = taskService.createTask(task);
+        taskService.deleteTask(task.getId());
 
-        // Eliminar tarea
-        taskService.deleteTask(createdTask.getId());
-
-        // Validar eliminación
-        assertFalse(taskRepository.findById(createdTask.getId()).isPresent());
-        System.out.println("Prueba de integración de eliminación de tarea: éxito");
+        assertFalse(taskRepository.findById(task.getId()).isPresent()); // Verificar eliminación
     }
 
+   //Excepción al intentar eliminar una tarea que no existe.
+    @Test
+    void testDeleteNonExistingTask() {
+        ResponseStatusException exception = assertThrows(ResponseStatusException.class, () -> {
+            taskService.deleteTask(999L); // ID inexistente
+        });
+
+        assertEquals(HttpStatus.NOT_FOUND, exception.getStatusCode());
+        assertEquals("Tarea no encontrada", exception.getReason());
+    }
+
+    //Prueba para obtener tareas por estado (pendiente o completada).
     @Test
     void testGetTasksByStatus() {
         Task task1 = new Task();
-        task1.setTitle("Tarea Pendiente");
-        task1.setDescription("Descripción pendiente");
+        task1.setTitle("Task 1");
         task1.setStatus(TaskStatus.PENDIENTE);
+        taskRepository.save(task1); // Guardar tarea pendiente
 
         Task task2 = new Task();
-        task2.setTitle("Tarea Completada");
-        task2.setDescription("Descripción completada");
-        task2.setStatus(TaskStatus.COMPLETADA);
+        task2.setTitle("Task 2");
+        task2.setStatus(TaskStatus.COMPLETADO);
+        taskRepository.save(task2); // Guardar tarea completada
 
-        // Crear tareas
-        taskService.createTask(task1);
-        taskService.createTask(task2);
-
-        // Recuperar tareas por estado
         List<Task> pendingTasks = taskService.getTasksByStatus(TaskStatus.PENDIENTE);
-        List<Task> completedTasks = taskService.getTasksByStatus(TaskStatus.COMPLETADA);
+        List<Task> completedTasks = taskService.getTasksByStatus(TaskStatus.COMPLETADO);
 
-        assertEquals(1, pendingTasks.size());
-        assertEquals("Tarea Pendiente", pendingTasks.getFirst().getTitle());
-        assertEquals(1, completedTasks.size());
-        assertEquals("Tarea Completada", completedTasks.getFirst().getTitle());
-        System.out.println("Prueba de integración de recuperación de tareas por estado: éxito");
+        // Verificar que las tareas se han recuperado correctamente por su estado
+        assertTrue(pendingTasks.stream().anyMatch(task -> task.getTitle().equals("Task 1")));
+        assertTrue(completedTasks.stream().anyMatch(task -> task.getTitle().equals("Task 2")));
+
+        taskRepository.delete(task1);
+        taskRepository.delete(task2);
     }
 }

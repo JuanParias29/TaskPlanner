@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Interfaz de repositorio para la entidad Task.
  * Extiende JpaRepository para proporcionar operaciones CRUD estándar.
- * Incluye un metodo para encoontar tareas por estado
+ * Incluye un metodo para encontrar tareas por estado
  */
 public interface TaskRepository extends JpaRepository<Task, Long> {
     List<Task> findByStatus(TaskStatus status);
