@@ -6,5 +6,5 @@ package PIXIES.TaskPlanner.Entity;
  */
 public enum TaskStatus {
     PENDIENTE,   // Tarea aún no completada
-    COMPLETADO   // Tarea finalizada
+    COMPLETADA   // Tarea finalizada
 }

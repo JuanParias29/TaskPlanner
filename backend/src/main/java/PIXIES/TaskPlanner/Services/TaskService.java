@@ -24,7 +24,9 @@ public class TaskService {
         if (task.getTitle() == null || task.getTitle().isEmpty()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "El título no puede estar vacío");
         }
-        return taskRepository.save(task);
+        Task createdTask = taskRepository.save(task);
+        System.out.println("Tarea creada exitosamente: " + createdTask.getTitle());
+        return createdTask;
     }
 
     // Editar tarea
@@ -40,7 +42,9 @@ public class TaskService {
         task.setDescription(updatedTask.getDescription());
         task.setStatus(updatedTask.getStatus() != null ? updatedTask.getStatus() : TaskStatus.PENDIENTE);
 
-        return taskRepository.save(task);
+        Task savedTask = taskRepository.save(task);
+        System.out.println("Tarea actualizada exitosamente: " + savedTask.getTitle());
+        return savedTask;
     }
 
     // Eliminar tarea por ID
@@ -48,10 +52,14 @@ public class TaskService {
         Task task = taskRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Tarea no encontrada"));
         taskRepository.delete(task);
+        System.out.println("Tarea eliminada exitosamente: " + id);
     }
 
     // Filtrar tareas por estado (completadas o pendientes)
     public List<Task> getTasksByStatus(TaskStatus status) {
-        return taskRepository.findByStatus(status);
+        List<Task> tasks = taskRepository.findByStatus(status);
+        System.out.println("Tareas obtenidas por estado: " + status + " - Cantidad: " + tasks.size());
+        return tasks;
     }
 }
+
