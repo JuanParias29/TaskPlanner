@@ -7,7 +7,6 @@
   box-sizing: border-box;
 }
 
-/* Estilo general del body */
 body {
   background-image: url("https://static.vecteezy.com/system/resources/previews/013/151/035/non_2x/light-blue-and-purple-gradient-background-free-vector.jpg");
   display: flex; /* Usar flexbox para centrar contenido */
@@ -17,10 +16,9 @@ body {
   padding-top: 20px; /* Espacio en la parte superior */
 }
 
-/* Estilo del contenedor principal de las tareas */
 .TodoWrapper {
   display: flex;
-  height: 100vh; /* Hacer que la altura ocupe toda la ventana */
+  height: 100vh;
 }
 
 .left-container {
@@ -34,16 +32,14 @@ body {
 }
 
 .right-container {
-  width: 100%; /* Ancho de la sección para las tareas */
   padding: 30px;
   display: flex;
   flex-direction: column; /* Apilar el filtro y las tareas verticalmente */
   position: absolute;
-  right: 0px;
+  right: 0;
   left: 550px;
   top:20px;
   width: 1010px;      /* Establece un ancho fijo */
-
 
 }
 
