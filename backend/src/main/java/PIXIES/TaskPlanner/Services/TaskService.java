@@ -29,37 +29,41 @@ public class TaskService {
         return createdTask;
     }
 
-    // Editar tarea
-    public Task updateTask(Long id, Task updatedTask) {
-        Task task = taskRepository.findById(id)
+    // Actualizar tarea
+    public Task updateTask(long id, Task updatedTask) {
+        Task existingTask = taskRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Tarea no encontrada"));
 
+        // Validar el título
         if (updatedTask.getTitle() == null || updatedTask.getTitle().isEmpty()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "El título no puede estar vacío");
         }
 
-        task.setTitle(updatedTask.getTitle());
-        task.setDescription(updatedTask.getDescription());
-        task.setStatus(updatedTask.getStatus() != null ? updatedTask.getStatus() : TaskStatus.PENDIENTE);
 
-        Task savedTask = taskRepository.save(task);
+        // Actualizar la tarea
+        existingTask.setTitle(updatedTask.getTitle());
+        existingTask.setDescription(updatedTask.getDescription());
+        existingTask.setStatus(updatedTask.getStatus());
+
+        Task savedTask = taskRepository.save(existingTask);
         System.out.println("Tarea actualizada exitosamente: " + savedTask.getTitle());
         return savedTask;
     }
 
-    // Eliminar tarea por ID
-    public void deleteTask(Long id) {
-        Task task = taskRepository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Tarea no encontrada"));
-        taskRepository.delete(task);
-        System.out.println("Tarea eliminada exitosamente: " + id);
+    // Eliminar tarea
+    public void deleteTask(long id) {
+        if (taskRepository.existsById(id)) {
+            taskRepository.deleteById(id);
+            System.out.println("Tarea eliminada exitosamente: " + id);
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Tarea no encontrada");
+        }
     }
 
-    // Filtrar tareas por estado (completadas o pendientes)
+    // Obtener tareas por estado
     public List<Task> getTasksByStatus(TaskStatus status) {
         List<Task> tasks = taskRepository.findByStatus(status);
-        System.out.println("Tareas obtenidas por estado: " + status + " - Cantidad: " + tasks.size());
+        System.out.println("Tareas recuperadas por estado (" + status + "): " + tasks.size());
         return tasks;
     }
 }
-
