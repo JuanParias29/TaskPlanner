@@ -33,7 +33,6 @@ const TodoWrapper = () => {
         }
     };
 
-
     const deleteTodo = async (id) => {
         try {
             await axios.delete(`/api/tasks/${id}`); // Elimina la tarea
@@ -45,13 +44,13 @@ const TodoWrapper = () => {
 
     const toggleComplete = async (id) => {
         const todoToToggle = todos.find((todo) => todo.id === id);
-        const updatedTask = { ...todoToToggle, completed: !todoToToggle.completed };
+        const updatedTask = { ...todoToToggle, status: todoToToggle.status === 'PENDIENTE' ? 'COMPLETADO' : 'PENDIENTE' };
 
         try {
             await axios.put(`/api/tasks/${id}`, updatedTask); // Actualiza la tarea en la API
             setTodos(
                 todos.map((todo) =>
-                    todo.id === id ? { ...todo, completed: !todo.completed } : todo
+                    todo.id === id ? { ...todo, status: updatedTask.status } : todo
                 )
             );
         } catch (error) {
@@ -74,8 +73,8 @@ const TodoWrapper = () => {
 
     // Filtrar tareas según el estado
     const filteredTodos = todos.filter(todo => {
-        if (filter === 'completed') return todo.completed;
-        if (filter === 'incompleted') return !todo.completed;
+        if (filter === 'completed') return todo.status === 'COMPLETADO';
+        if (filter === 'incompleted') return todo.status === 'PENDIENTE';
         return true; // Para 'all'
     });
 

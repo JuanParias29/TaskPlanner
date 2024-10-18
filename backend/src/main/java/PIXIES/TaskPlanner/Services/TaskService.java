@@ -24,6 +24,9 @@ public class TaskService {
         if (task.getTitle() == null || task.getTitle().isEmpty()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "El título no puede estar vacío");
         }
+        if (task.getStatus() == null) {
+            task.setStatus(TaskStatus.PENDIENTE); // Establecer el estado por defecto
+        }
         return taskRepository.save(task);
     }
 

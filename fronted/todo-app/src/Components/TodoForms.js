@@ -1,17 +1,19 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
-const TodoForms = ({addTodo}) => {
-    const [task, setTask] = useState('');  // Nombre de la tarea
+const TodoForms = ({ addTodo }) => {
+    const [title, setTitle] = useState('');  // Nombre de la tarea
     const [description, setDescription] = useState('');  // Descripción de la tarea
+    const [status, setStatus] = useState('PENDIENTE');  // Estado de la tarea, por defecto 'PENDIENTE'
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (task && description) {
-            // Añadir la tarea con su descripción
-            addTodo({task, description});
+        if (title && description && status) {
+            // Añadir la tarea con su descripción y estado
+            addTodo({ title, description, status });
             // Limpiar los campos
-            setTask('');
+            setTitle('');
             setDescription('');
+            setStatus('PENDIENTE');
         }
     };
 
@@ -19,8 +21,8 @@ const TodoForms = ({addTodo}) => {
         <form onSubmit={handleSubmit} className="TodoForm">
             <input
                 type="text"
-                value={task}
-                onChange={(e) => setTask(e.target.value)}
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
                 className="todo-input"
                 placeholder='Nombre '
             />
@@ -30,11 +32,17 @@ const TodoForms = ({addTodo}) => {
                 className="todo-input"
                 placeholder='Descripción'
             />
+            <select
+                value={status}
+                onChange={(e) => setStatus(e.target.value)}
+                className="todo-input"
+            >
+                <option value="PENDIENTE">Pendiente</option>
+                <option value="COMPLETADO">Completado</option>
+            </select>
             <button type="submit" className='todo-btn'>Crear</button>
         </form>
     );
 };
 
 export default TodoForms;
-
-
