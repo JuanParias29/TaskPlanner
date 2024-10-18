@@ -9,10 +9,9 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/api/**") // Endpoint del back-end
+        registry.addMapping("/api/tasks") // Endpoint del back-end
                 .allowedOrigins("http://localhost:3000") // URL del front-end de React
                 .allowedMethods("GET", "POST", "PUT", "DELETE") // Métodos permitidos
                 .allowedHeaders("*");
     }
 }
-
