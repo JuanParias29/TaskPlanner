@@ -1,44 +1,75 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TodoForms from './TodoForms';
-import { v4 as uuidv4 } from 'uuid';
 import Todo from './Todo';
 import { EditTodoForm } from './EditTodoForm';
+import axios from 'axios'; // Importa axios
 
 const TodoWrapper = () => {
     const [todos, setTodos] = useState([]);
     const [filter, setFilter] = useState('all'); // Estado para el filtro
 
-    const addTodo = (todo) => {
-        setTodos([
-            ...todos,
-            { id: uuidv4(), task: todo.task, description: todo.description, completed: false, isEditing: false },
-        ]);
+    // Función para obtener tareas desde la API
+    const fetchTodos = async () => {
+        try {
+            const response = await axios.get('/api/tasks/status/all'); // Cambia según la ruta que necesites
+            setTodos(response.data);
+        } catch (error) {
+            console.error('Error fetching tasks:', error);
+        }
     };
 
-    const deleteTodo = (id) => setTodos(todos.filter((todo) => todo.id !== id));
+    useEffect(() => {
+        fetchTodos(); // Obtén las tareas al cargar el componente
+    }, []);
 
-    const toggleComplete = (id) => {
-        setTodos(
-            todos.map((todo) =>
-                todo.id === id ? { ...todo, completed: !todo.completed } : todo
-            )
-        );
+    const addTodo = async (todo) => {
+        console.log('Intentando agregar una nueva tarea:', todo); // Muestra lo que estás tratando de agregar
+        try {
+            const response = await axios.post('/api/tasks', todo);
+            console.log('Tarea agregada:', response.data); // Muestra la tarea que fue agregada
+            setTodos([...todos, response.data]);
+        } catch (error) {
+            console.error('Error agregando tarea:', error); // Muestra el error en caso de que ocurra
+        }
     };
 
-    const editTodo = (id) => {
-        setTodos(
-            todos.map((todo) =>
-                todo.id === id ? { ...todo, isEditing: !todo.isEditing } : todo
-            )
-        );
+
+    const deleteTodo = async (id) => {
+        try {
+            await axios.delete(`/api/tasks/${id}`); // Elimina la tarea
+            setTodos(todos.filter((todo) => todo.id !== id)); // Actualiza la lista de tareas
+        } catch (error) {
+            console.error('Error deleting task:', error);
+        }
     };
 
-    const editTask = (updatedTask, id) => {
-        setTodos(
-            todos.map((todo) =>
-                todo.id === id ? { ...todo, ...updatedTask, isEditing: !todo.isEditing } : todo
-            )
-        );
+    const toggleComplete = async (id) => {
+        const todoToToggle = todos.find((todo) => todo.id === id);
+        const updatedTask = { ...todoToToggle, completed: !todoToToggle.completed };
+
+        try {
+            await axios.put(`/api/tasks/${id}`, updatedTask); // Actualiza la tarea en la API
+            setTodos(
+                todos.map((todo) =>
+                    todo.id === id ? { ...todo, completed: !todo.completed } : todo
+                )
+            );
+        } catch (error) {
+            console.error('Error toggling task completion:', error);
+        }
+    };
+
+    const editTask = async (updatedTask, id) => {
+        try {
+            await axios.put(`/api/tasks/${id}`, updatedTask); // Envía la tarea actualizada a la API
+            setTodos(
+                todos.map((todo) =>
+                    todo.id === id ? { ...todo, ...updatedTask, isEditing: !todo.isEditing } : todo
+                )
+            );
+        } catch (error) {
+            console.error('Error editing task:', error);
+        }
     };
 
     // Filtrar tareas según el estado
@@ -72,7 +103,7 @@ const TodoWrapper = () => {
                                 key={todo.id}
                                 task={todo}
                                 deleteTodo={deleteTodo}
-                                editTodo={editTodo}
+                                editTodo={editTask}
                                 toggleComplete={toggleComplete}
                             />
                         )
