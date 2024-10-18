@@ -4,24 +4,26 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
+/**
+ * Clase que representa una tarea en la aplicación de planificación de tareas.
+ */
 @Entity
-@Data // Esto es opcional pueden usarlo o crear los getter y setters
+@Data
 @NoArgsConstructor
-
 public class Task {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private String Title;
-    private String Description;
+    private String title;
+    private String description;
 
     @Enumerated(EnumType.STRING)
-    private TaskStatus Status;
+    private TaskStatus status; // Enum para el estado de la tarea (PENDIENTE o COMPLETADA)
 
     /*
-    posibles funcionalidades futuras
+    Posibles funcionalidades futuras:
     private String priority;
     private String date;
     private String category;
