@@ -20,7 +20,7 @@ public class Task {
     private String description;
 
     @Enumerated(EnumType.STRING)
-    private TaskStatus status; // Enum para el estado de la tarea (PENDIENTE o COMPLETADA)
+    private TaskStatus status = TaskStatus.PENDIENTE; // Enum para el estado de la tarea (PENDIENTE o COMPLETADA), por defecto PENDIENTE
 
     /*
     Posibles funcionalidades futuras:

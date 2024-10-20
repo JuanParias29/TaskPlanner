@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ba82194c-ec20-49be-90da-e23e806fda1a" name="Changes" comment="correccion final de errores en componentes del sistema, pruebas unitarias y de integracion aprobadas" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="Feature-JuanPablo" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
+    <option name="PUSH_AUTO_UPDATE" value="true" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Feature-JuanP" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;JuanParias29&quot;
+  }
+}</component>
+  <component name="GitHubPullRequestState">{
+  &quot;prStates&quot;: [
+    {
+      &quot;id&quot;: {
+        &quot;id&quot;: &quot;PR_kwDOM_mBGs5-klKW&quot;,
+        &quot;number&quot;: 1
+      },
+      &quot;lastSeen&quot;: 1728925527432
+    }
+  ]
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/JuanParias29/TaskPlanner.git&quot;,
+    &quot;accountId&quot;: &quot;fc3fd0b0-0798-4aef-baa2-7a0db810d2b4&quot;
+  },
+  &quot;recentNewPullRequestHead&quot;: {
+    &quot;server&quot;: {
+      &quot;useHttp&quot;: false,
+      &quot;host&quot;: &quot;github.com&quot;,
+      &quot;port&quot;: null,
+      &quot;suffix&quot;: null
+    },
+    &quot;owner&quot;: &quot;JuanParias29&quot;,
+    &quot;repository&quot;: &quot;TaskPlanner&quot;
+  }
+}</component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2nMXDvH8nVJwIVBW7QfkW0s8iU3" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JUnit.All in TaskPlanner (1).executor": "Run",
+    "JUnit.All in TaskPlanner.executor": "Run",
+    "JUnit.TaskServiceIntegrationTest.executor": "Run",
+    "JUnit.TaskServiceIntegrationTest.testGetTasksByStatus.executor": "Run",
+    "JUnit.TaskServiceTest.executor": "Run",
+    "JUnit.TaskServiceTest.testCreateTask.executor": "Debug",
+    "JUnit.TaskServiceTest.testUpdateTask.executor": "Debug",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.TaskPlannerApplication.executor": "Run",
+    "git-widget-placeholder": "Feature-JuanPablo",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/juanp/Downloads/TaskPlanner-develop",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_interpreter_path": "node",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\juanp\Desktop\TaskPlanner\src\main\resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\juanp\Desktop\TaskPlanner" />
+      <recent name="C:\Users\juanp\Desktop\TaskPlanner\backend" />
+      <recent name="C:\Users\juanp\Desktop\TaskPlanner\src\main\java\PIXIES\TaskPlanner" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.All in TaskPlanner">
+    <configuration name="All in TaskPlanner" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TaskPlanner" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TaskServiceIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TaskPlanner" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="PIXIES.TaskPlanner.Integration.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="PIXIES.TaskPlanner.Integration" />
+      <option name="MAIN_CLASS_NAME" value="PIXIES.TaskPlanner.Integration.TaskServiceIntegrationTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TaskServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TaskPlanner" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="PIXIES.TaskPlanner.Unit.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="PIXIES.TaskPlanner.Unit" />
+      <option name="MAIN_CLASS_NAME" value="PIXIES.TaskPlanner.Unit.TaskServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
+      <method v="2" />
+    </configuration>
+    <configuration name="TaskPlannerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="TaskPlanner" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="PIXIES.TaskPlanner.TaskPlannerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.All in TaskPlanner" />
+        <item itemvalue="JUnit.TaskServiceIntegrationTest" />
+        <item itemvalue="JUnit.TaskServiceTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23339.11" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23339.11" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ba82194c-ec20-49be-90da-e23e806fda1a" name="Changes" comment="" />
+      <created>1728783806192</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1728783806192</updated>
+      <workItem from="1728783809977" duration="1238000" />
+      <workItem from="1728787336482" duration="130000" />
+      <workItem from="1728827807569" duration="228000" />
+      <workItem from="1728915519825" duration="32000" />
+      <workItem from="1728915603100" duration="867000" />
+      <workItem from="1728916613014" duration="3512000" />
+      <workItem from="1728924279087" duration="1247000" />
+      <workItem from="1728925670356" duration="1023000" />
+      <workItem from="1728938889287" duration="1746000" />
+      <workItem from="1728940781561" duration="132000" />
+      <workItem from="1728941006967" duration="2256000" />
+      <workItem from="1728999908678" duration="99000" />
+      <workItem from="1729009173184" duration="142000" />
+      <workItem from="1729012491844" duration="91000" />
+      <workItem from="1729019579430" duration="1865000" />
+      <workItem from="1729125313412" duration="488000" />
+      <workItem from="1729126363132" duration="3084000" />
+      <workItem from="1729181441250" duration="194000" />
+      <workItem from="1729181800815" duration="368000" />
+      <workItem from="1729182277738" duration="111000" />
+      <workItem from="1729182973092" duration="518000" />
+      <workItem from="1729183552358" duration="6000" />
+      <workItem from="1729184035393" duration="2311000" />
+      <workItem from="1729187200809" duration="835000" />
+      <workItem from="1729191520937" duration="6891000" />
+      <workItem from="1729201043650" duration="4188000" />
+    </task>
+    <task id="LOCAL-00001" summary="configuracion de las propiedades de la base de datos de la aplicacion en MySQL y los tests en H2">
+      <option name="closed" value="true" />
+      <created>1728916883376</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1728916883377</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Se definieron las caracteristicas de la tarea.&#10;Se definio una nueva clase que basicamente permite deinifir una lista de posibles valores estaticos, buscar clase ENUM para mayor informacion">
+      <option name="closed" value="true" />
+      <created>1728922494057</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1728922494059</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Se definieron las caracteristicas de la tarea.&#10;Se definio una nueva clase que basicamente permite deinifir una lista de posibles valores estaticos, buscar clase ENUM para mayor informacion">
+      <option name="closed" value="true" />
+      <created>1728922666766</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1728922666767</updated>
+    </task>
+    <task id="LOCAL-00004" summary="EL status de la tarea solo puedo tomar los valores deinifinos en la clase TaskStatus --&gt; estructura de datos tipo enum">
+      <option name="closed" value="true" />
+      <created>1728922723191</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1728922723192</updated>
+    </task>
+    <task id="LOCAL-00005" summary="definicion inicial de los componentes de la aplicacion">
+      <option name="closed" value="true" />
+      <created>1728924548139</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1728924548139</updated>
+    </task>
+    <task id="LOCAL-00006" summary="se agregaron algunos metodos y definiciones">
+      <option name="closed" value="true" />
+      <created>1728925161981</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1728925161982</updated>
+    </task>
+    <task id="LOCAL-00007" summary="se creo una carpeta para el backend y otra para el frontend y se movieron los archivos respectivos a cada una">
+      <option name="closed" value="true" />
+      <created>1728946551545</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1728946551549</updated>
+    </task>
+    <task id="LOCAL-00008" summary="se creo una carpeta para el backend y otra para el frontend y se movieron los archivos respectivos a cada una">
+      <option name="closed" value="true" />
+      <created>1728946627930</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1728946627931</updated>
+    </task>
+    <task id="LOCAL-00009" summary="corrección de errores y se agregaron algunos comentarios guía">
+      <option name="closed" value="true" />
+      <created>1729184733116</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1729184733117</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Implementacion de test unitario (el sistema paso todos los test)">
+      <option name="closed" value="true" />
+      <created>1729186392255</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1729186392255</updated>
+    </task>
+    <task id="LOCAL-00011" summary="correccion 1 de errores">
+      <option name="closed" value="true" />
+      <created>1729196526895</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1729196526898</updated>
+    </task>
+    <task id="LOCAL-00012" summary="correccion final de errores en componentes del sistema, pruebas unitarias y de integracion aprobadas">
+      <option name="closed" value="true" />
+      <created>1729205169209</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1729205169216</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="configuracion de las propiedades de la base de datos de la aplicacion en MySQL y los tests en H2" />
+    <MESSAGE value="Se definieron las caracteristicas de la tarea.&#10;Se definio una nueva clase que basicamente permite deinifir una lista de posibles valores estaticos, buscar clase ENUM para mayor informacion" />
+    <MESSAGE value="EL status de la tarea solo puedo tomar los valores deinifinos en la clase TaskStatus --&gt; estructura de datos tipo enum" />
+    <MESSAGE value="definicion inicial de los componentes de la aplicacion" />
+    <MESSAGE value="se agregaron algunos metodos y definiciones" />
+    <MESSAGE value="se creo una carpeta para el backend y otra para el frontend y se movieron los archivos respectivos a cada una" />
+    <MESSAGE value="corrección de errores y se agregaron algunos comentarios guía" />
+    <MESSAGE value="Implementacion de test unitario (el sistema paso todos los test)" />
+    <MESSAGE value="correccion 1 de errores" />
+    <MESSAGE value="correccion final de errores en componentes del sistema, pruebas unitarias y de integracion aprobadas" />
+    <option name="LAST_COMMIT_MESSAGE" value="correccion final de errores en componentes del sistema, pruebas unitarias y de integracion aprobadas" />
+  </component>
+  <component name="XDebuggerManager">
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="org.springframework.aop.framework.JdkDynamicAopProxy" memberName="advised" />
+      </pinned-members>
+    </pin-to-top-manager>
+    <watches-manager>
+      <configuration name="JUnit">
+        <watch expression="taskRepository" language="JAVA" />
+      </configuration>
+    </watches-manager>
+  </component>
+</project>

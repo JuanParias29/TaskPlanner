@@ -113,7 +113,7 @@ class TaskServiceIntegrationTest {
         assertFalse(taskRepository.findById(task.getId()).isPresent()); // Verificar eliminación
     }
 
-    //Excepción al intentar eliminar una tarea que no existe.
+   //Excepción al intentar eliminar una tarea que no existe.
     @Test
     void testDeleteNonExistingTask() {
         ResponseStatusException exception = assertThrows(ResponseStatusException.class, () -> {
