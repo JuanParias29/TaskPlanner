@@ -1,7 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { faCheckSquare, faSquare } from '@fortawesome/free-regular-svg-icons'; // Añadir los iconos de check vacío y marcado
 
 export const Todo = ({ task, deleteTodo, editTodo, toggleComplete }) => {
@@ -10,15 +9,15 @@ export const Todo = ({ task, deleteTodo, editTodo, toggleComplete }) => {
             <div className="task-actions">
                 <span className="check-container" onClick={() => toggleComplete(task.id)}>
                     {/* Comprobación de tarea completada */}
-                    {task.completed ? (
+                    {task.status === 'COMPLETADO' ? (
                         <FontAwesomeIcon icon={faCheckSquare} className="check-icon" />
                     ) : (
                         <FontAwesomeIcon icon={faSquare} className="check-icon" />
                     )}
                 </span>
                 <div className="task-text">
-                    <p className={`${task.completed ? 'completed' : 'incompleted'}`}>{task.task}</p>
-                    <p className={`description-text ${task.completed ? 'completed' : 'incompleted'}`}>
+                    <p className={`${task.status === 'COMPLETADO' ? 'completed' : 'incompleted'}`}>{task.title}</p>
+                    <p className={`description-text ${task.status === 'COMPLETADO' ? 'completed' : 'incompleted'}`}>
                         {task.description}
                     </p>
                 </div>
@@ -32,7 +31,3 @@ export const Todo = ({ task, deleteTodo, editTodo, toggleComplete }) => {
 };
 
 export default Todo;
-
-
-
-

@@ -20,28 +20,24 @@ public class TaskController {
         this.taskService = taskService;
     }
 
-    // Añadir tarea
     @PostMapping
     public ResponseEntity<Task> createTask(@RequestBody Task task) {
         Task newTask = taskService.createTask(task);
         return ResponseEntity.status(HttpStatus.CREATED).body(newTask);
     }
 
-    // Editar tarea
     @PutMapping("/{id}")
     public ResponseEntity<Task> updateTask(@PathVariable Long id, @RequestBody Task updatedTask) {
         Task task = taskService.updateTask(id, updatedTask);
         return ResponseEntity.ok(task);
     }
 
-    // Eliminar tarea
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteTask(@PathVariable Long id) {
         taskService.deleteTask(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
-    // Obtener tareas por estado (pendiente o completada)
     @GetMapping("/status/{status}")
     public ResponseEntity<List<Task>> getTasksByStatus(@PathVariable String status) {
         TaskStatus taskStatus;
