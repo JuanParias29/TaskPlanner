@@ -22,15 +22,7 @@ public class Task {
     @Enumerated(EnumType.STRING)
     private TaskStatus status = TaskStatus.PENDIENTE; // Enum para el estado de la tarea (PENDIENTE o COMPLETADA), por defecto PENDIENTE
 
-    /*
-    Posibles funcionalidades futuras:
-    private String priority;
-    private String date;
-    private String category;
-     */
-
-    /*@ManyToOne
-    @JoinColumn(name = "user")
-    private Zone zone;
-    */
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }
