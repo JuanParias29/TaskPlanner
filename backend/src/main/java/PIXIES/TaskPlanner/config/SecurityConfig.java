@@ -8,6 +8,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.firewall.HttpFirewall;
+import org.springframework.security.web.firewall.StrictHttpFirewall;
 
 @Configuration
 public class SecurityConfig {
@@ -24,6 +26,14 @@ public class SecurityConfig {
     }
 
     @Bean
+    public HttpFirewall allowSemicolonHttpFirewall() {
+        StrictHttpFirewall firewall = new StrictHttpFirewall();
+        firewall.setAllowSemicolon(true);  // Permite ';' en las URLs
+        return firewall;
+    }
+
+
+    @Bean
     public UserDetailsService userDetailsService() {
         return customUserDetailsService;  // Usamos nuestro CustomUserDetailsService para la autenticación
     }
@@ -32,7 +42,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/register", "/login").permitAll()  // Permitir acceso sin autenticación
+                        .requestMatchers("/login", "/register").permitAll()  // Permitir acceso sin autenticación
                         .anyRequest().authenticated()  // Requiere autenticación para otras rutas
                 )
                 .formLogin(form -> form

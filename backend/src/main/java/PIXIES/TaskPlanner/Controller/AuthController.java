@@ -29,18 +29,33 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public String registerUser(@ModelAttribute User user) {
+    public String registerUser(@ModelAttribute User user, Model model) {
         try {
-            // Verifica si el controlador está siendo alcanzado
-            System.out.println("Registrando usuario: " + user.getUsername());
+            System.out.println("Intentando registrar usuario: " + user.getUsername());
+
+            // Codifica la contraseña antes de guardar el usuario
             user.setPassword(passwordEncoder.encode(user.getPassword()));
+
+            // Registra el usuario usando el servicio
             userService.registerUser(user);
-            return "redirect:/login";  // Redirige a login después de un registro exitoso
+
+            System.out.println("Usuario registrado exitosamente");
+            return "redirect:/login";
+        } catch (IllegalArgumentException e) {
+            model.addAttribute("error", e.getMessage());
+            return "register";  // Vuelve a la página de registro con el mensaje de error
         } catch (Exception e) {
-            // Captura cualquier error y muestra un mensaje en la consola
             e.printStackTrace();
-            return "register";  // Vuelve al formulario de registro si hay un error
+            model.addAttribute("error", "Ocurrió un error inesperado. Por favor, inténtalo de nuevo.");
+            return "register";
         }
     }
+
+    @GetMapping("/login")
+    public String loginPage() {
+        return "login";  // Debe devolver "login" sin .html, Thymeleaf lo resolverá como login.html
+    }
+
+
 
 }

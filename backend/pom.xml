@@ -58,6 +58,19 @@
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>org.hibernate.validator</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>8.0.1.Final</version> <!-- Cambia según la versión más reciente -->
+		</dependency>
+
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>jakarta.el</artifactId>
+			<version>4.0.2</version> <!-- Necesario para el soporte de expresiones EL -->
+		</dependency>
+
+
 		<!-- Dependencia de Lombok -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -76,6 +89,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>PIXIES</groupId>
 			<artifactId>TaskPlanner</artifactId>
