@@ -25,13 +25,25 @@ const Register = () => {
         try {
             const response = await axios.post('/api/auth/register', { username, email, password });
             if (response.status === 201) {
-                navigate('/login');
+                navigate('http://localhost:3000/api/auth/login');
             }
         } catch (error) {
-            console.error('Error durante el registro:', error.response?.data || error.message);
-            setError(error.response?.data || 'Ocurrió un error durante el registro.');
+            if (error.response) {
+                // El servidor respondió con un código de estado fuera del rango 2xx
+                console.error('Error en la respuesta del servidor:', error.response.data);
+                setError(error.response.data || 'Ocurrió un error durante el registro.');
+            } else if (error.request) {
+                // La solicitud fue hecha pero no se recibió respuesta
+                console.error('No se recibió respuesta del servidor:', error.request);
+                setError('No se recibió respuesta del servidor. Por favor, inténtalo de nuevo más tarde.');
+            } else {
+                // Algo sucedió al configurar la solicitud que provocó un error
+                console.error('Error durante la configuración de la solicitud:', error.message);
+                setError('Ocurrió un error durante la configuración de la solicitud. Por favor, inténtalo de nuevo.');
+            }
         }
     };
+
 
     const formStyle = {
         display: 'flex',

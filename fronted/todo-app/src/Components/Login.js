@@ -12,15 +12,17 @@ const Login = () => {
         e.preventDefault();
 
         try {
-            const response = await axios.post('/api/auth/login', { username, password });
+            const response = await axios.post(
+                'http://localhost:3000/api/auth/login',
+                { username, password },
+                { withCredentials: true } // Habilita el envío de cookies
+            );
 
-            // Si el login es exitoso, redirige a la página de tareas
             if (response.status === 200) {
                 navigate('/tasks');
             }
         } catch (err) {
-            // Muestra un error si el login falla
-            console.error('Error durante el login:', err);
+            console.error('Error durante el login:', err.response || err.message);
             setError('Credenciales incorrectas');
         }
     };

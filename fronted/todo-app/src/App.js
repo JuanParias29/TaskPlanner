@@ -12,7 +12,7 @@ function App() {
                 <Route path="/register" element={<Register />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/tasks" element={<TodoWrapper />} />
-                <Route path="/" element={<Register />} /> {/* Página por defecto, redirige al login */}
+                <Route path="/" element={<Register />} /> {/* Página por defecto, redirige al register */}
             </Routes>
         </Router>
     );
