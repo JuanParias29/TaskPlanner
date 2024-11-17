@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserService {
 
@@ -20,7 +22,8 @@ public class UserService {
     }
 
     public User findByUsername(String username) {
-        return userRepository.findByUsername(username).orElse(null);
+        Optional<User> user = userRepository.findByUsername(username);
+        return user.orElseThrow(() -> new IllegalArgumentException("Usuario no encontrado"));
     }
     @Transactional
     public void registerUser(User user) {
@@ -29,5 +32,4 @@ public class UserService {
         // Guardar el usuario en la base de datos
         userRepository.save(user);
     }
-
 }
