@@ -3,13 +3,14 @@ package PIXIES.TaskPlanner.Controller;
 import PIXIES.TaskPlanner.Entity.User;
 import PIXIES.TaskPlanner.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
+@RequestMapping("/api/auth")
 @Controller
 public class AuthController {
 
@@ -22,40 +23,33 @@ public class AuthController {
         this.passwordEncoder = passwordEncoder;
     }
 
-    @GetMapping("/register")
-    public String showRegistrationForm(Model model) {
-        model.addAttribute("user", new User());
-        return "register";  // Renderiza la vista de "register.html" en /templates
-    }
-
+    // Endpoint para el registro
     @PostMapping("/register")
-    public String registerUser(@ModelAttribute User user, Model model) {
+    public ResponseEntity<?> registerUser(@RequestBody User user) {
         try {
-            System.out.println("Intentando registrar usuario: " + user.getUsername());
+            // Comprueba si el nombre de usuario ya existe
+            if (userService.findByUsername(user.getUsername()) != null) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("El nombre de usuario ya está en uso.");
+            }
 
-            // Codifica la contraseña antes de guardar el usuario
-            user.setPassword(passwordEncoder.encode(user.getPassword()));
-
-            // Registra el usuario usando el servicio
+            // Guarda el usuario
             userService.registerUser(user);
-
-            System.out.println("Usuario registrado exitosamente");
-            return "redirect:/login";
-        } catch (IllegalArgumentException e) {
-            model.addAttribute("error", e.getMessage());
-            return "register";  // Vuelve a la página de registro con el mensaje de error
+            return ResponseEntity.status(HttpStatus.CREATED).body("Usuario registrado exitosamente.");
         } catch (Exception e) {
             e.printStackTrace();
-            model.addAttribute("error", "Ocurrió un error inesperado. Por favor, inténtalo de nuevo.");
-            return "register";
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Ocurrió un error durante el registro.");
         }
     }
 
-    @GetMapping("/login")
-    public String loginPage() {
-        return "login";  // Debe devolver "login" sin .html, Thymeleaf lo resolverá como login.html
+    @PostMapping("/login")
+    public ResponseEntity<?> loginUser(@RequestBody User user) {
+        User existingUser = userService.findByUsername(user.getUsername());
+
+        if (existingUser != null && passwordEncoder.matches(user.getPassword(), existingUser.getPassword())) {
+            return ResponseEntity.ok("Login exitoso");
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciales incorrectas");
+        }
     }
-
-
 
 }
