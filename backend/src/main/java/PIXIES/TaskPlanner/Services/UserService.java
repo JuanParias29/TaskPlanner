@@ -32,4 +32,3 @@ public class UserService {
         // Guardar el usuario en la base de datos
         userRepository.save(user);
     }
-}

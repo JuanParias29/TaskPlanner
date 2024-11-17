@@ -14,7 +14,7 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @Table(name = "users")  // Nombre explícito de la tabla
-public class    User {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,8 +35,5 @@ public class    User {
     @Column(unique = true, nullable = false)
     private String email;
 
-    @ElementCollection(fetch = FetchType.EAGER)  // Almacena roles en una tabla separada
-    @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))
-    @Column(name = "role")
-    private Set<String> roles = new HashSet<>();  // Por defecto, un usuario puede tener múltiples roles
+
 }
