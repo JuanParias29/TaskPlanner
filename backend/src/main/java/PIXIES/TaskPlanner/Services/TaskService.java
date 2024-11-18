@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.http.HttpStatus;
+import java.time.DayOfWeek;
 
 import java.util.List;
 
@@ -57,5 +58,14 @@ public class TaskService {
 
     public List<Task> getAllTasks() {
         return taskRepository.findAll();
+    }
+
+    public List<Task> getTasksByDay(DayOfWeek day) {
+        return taskRepository.findByDay(day);
+    }
+
+    // Obtener tareas por semana
+    public List<Task> getTasksByWeek(Integer week) {
+        return taskRepository.findByWeek(week);
     }
 }
