@@ -64,7 +64,6 @@ body {
   flex-direction: column;
   flex-grow: 1;
   max-width: 100%;
-  margin-left: 80px;
 }
 
 /* Título principal */
@@ -115,50 +114,6 @@ h1 {
   color: #888;
 
 }
-
-/* Contenedor del área de texto y el contador */
-.textarea-container {
-  position: relative;
-  width: 100%;
-}
-
-
-/* Área de texto del formulario */
-.todo-textarea {
-  padding: 15px;
-  font-size: 1.5em;
-  border: 2px solid #ccc;
-  border-radius: 5px;
-  width: 100%; /* Asegura que ocupe todo el ancho disponible */
-  height: 120px;
-  resize: none;
-  margin-bottom: 15px;
-
-}
-
-/* Contador de caracteres */
-.character-counter {
-  font-size: 0.8em;
-  color: black; /* Color negro para el contador */
-  position: absolute;
-  bottom: 5px;
-  right: 10px;
-}
-
-/* Contenedor del logo */
-.logo-container {
-  position: fixed;  /* Esto lo mantiene fijo en la parte superior izquierda */
-  top: 20px;        /* Ajusta el espacio desde la parte superior */
-  left: 245px;       /* Ajusta el espacio desde el borde izquierdo */
-  z-index: 10;      /* Asegura que el logo esté por encima de otros elementos */
-}
-
-/* Estilo del logo */
-.logo {
-  width: 180px;      /* Ajusta el tamaño del logo */
-  height: auto;      /* Mantiene la proporción original de la imagen */
-}
-
 
 /* Contenedor para el checkbox */
 .check-container {
@@ -231,7 +186,6 @@ h1 {
   align-items: flex-start;
   width: 100%;
   margin: 0;
-
 }
 
 /* Input y textarea del formulario */

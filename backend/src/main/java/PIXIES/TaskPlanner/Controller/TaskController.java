@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.DayOfWeek;
 import java.util.List;
 
 @RestController
@@ -50,9 +51,9 @@ public class TaskController {
         List<Task> tasks = taskService.getTasksByStatus(taskStatus);
         return ResponseEntity.ok(tasks);
     }
+
     @GetMapping
     public List<Task> getAllTasks() {
-        return taskService.getAllTasks();  // Usando un servicio para obtener las tareas
+        return taskService.getAllTasks();
     }
-
 }
