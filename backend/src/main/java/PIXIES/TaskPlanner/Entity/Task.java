@@ -19,12 +19,4 @@ public class Task {
 
     @Enumerated(EnumType.STRING)
     private TaskStatus status = TaskStatus.PENDIENTE;
-
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private DayOfWeek day;
-
-    @Column(nullable = true)
-    private Integer week;
-
 }

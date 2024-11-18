@@ -8,7 +8,5 @@ import java.time.DayOfWeek;
 
 public interface TaskRepository extends JpaRepository<Task, Long> {
     List<Task> findByStatus(TaskStatus status);
-    List<Task> findByDay(DayOfWeek day);
-    List<Task> findByWeek(Integer week);
 
 }

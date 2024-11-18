@@ -56,15 +56,4 @@ public class TaskController {
     public List<Task> getAllTasks() {
         return taskService.getAllTasks();
     }
-
-    @GetMapping("/byDay")
-    public List<Task> getTasksByDay(@RequestParam DayOfWeek day) {
-        return taskService.getTasksByDay(day);
-    }
-
-    @GetMapping("/byWeek")
-    public List<Task> getTasksByWeek(@RequestParam Integer week) {
-        return taskService.getTasksByWeek(week);
-    }
-
 }

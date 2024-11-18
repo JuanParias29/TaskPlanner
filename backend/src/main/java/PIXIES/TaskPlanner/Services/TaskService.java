@@ -59,13 +59,4 @@ public class TaskService {
     public List<Task> getAllTasks() {
         return taskRepository.findAll();
     }
-
-    public List<Task> getTasksByDay(DayOfWeek day) {
-        return taskRepository.findByDay(day);
-    }
-
-    // Obtener tareas por semana
-    public List<Task> getTasksByWeek(Integer week) {
-        return taskRepository.findByWeek(week);
-    }
 }
