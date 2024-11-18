@@ -19,18 +19,16 @@ public class TaskService {
         this.taskRepository = taskRepository;
     }
 
-    // Añadir tarea con validación de título
     public Task createTask(Task task) {
         if (task.getTitle() == null || task.getTitle().isEmpty()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "El título no puede estar vacío");
         }
         if (task.getStatus() == null) {
-            task.setStatus(TaskStatus.PENDIENTE); // Establecer el estado por defecto
+            task.setStatus(TaskStatus.PENDIENTE);
         }
         return taskRepository.save(task);
     }
 
-    // Editar tarea
     public Task updateTask(Long id, Task updatedTask) {
         Task task = taskRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Tarea no encontrada"));
@@ -46,19 +44,18 @@ public class TaskService {
         return taskRepository.save(task);
     }
 
-    // Eliminar tarea por ID
     public void deleteTask(Long id) {
         Task task = taskRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Tarea no encontrada"));
         taskRepository.delete(task);
     }
 
-    // Filtrar tareas por estado (completadas o pendientes)
+
     public List<Task> getTasksByStatus(TaskStatus status) {
         return taskRepository.findByStatus(status);
     }
-    // Metodo para obtener todas las tareas
+
     public List<Task> getAllTasks() {
-        return taskRepository.findAll();  // Usamos el findAll() de JpaRepository
+        return taskRepository.findAll();
     }
 }

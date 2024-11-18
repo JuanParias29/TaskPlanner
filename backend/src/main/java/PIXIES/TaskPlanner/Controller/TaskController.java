@@ -52,7 +52,7 @@ public class TaskController {
     }
     @GetMapping
     public List<Task> getAllTasks() {
-        return taskService.getAllTasks();  // Usando un servicio para obtener las tareas
+        return taskService.getAllTasks();
     }
 
 }

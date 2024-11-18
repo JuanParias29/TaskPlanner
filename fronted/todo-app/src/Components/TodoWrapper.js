@@ -6,20 +6,20 @@ import axios from 'axios';
 
 const TodoWrapper = () => {
     const [todos, setTodos] = useState([]);
-    const [filter, setFilter] = useState('all'); // Estado para el filtro
+    const [filter, setFilter] = useState('all');
 
-    // Función para obtener tareas desde la API
+
     const fetchTodos = async () => {
         try {
-            const response = await axios.get('/api/tasks'); // Cambia según la ruta que necesites
-            setTodos(response.data.map((todo) => ({ ...todo, isEditing: false }))); // Añadir 'isEditing' a cada tarea
+            const response = await axios.get('/api/tasks');
+            setTodos(response.data.map((todo) => ({ ...todo, isEditing: false })));
         } catch (error) {
             console.error('Error fetching tasks:', error);
         }
     };
 
     useEffect(() => {
-        fetchTodos(); // Obtén las tareas al cargar el componente
+        fetchTodos();
     }, []);
 
     const addTodo = async (todo) => {
@@ -77,7 +77,7 @@ const TodoWrapper = () => {
         }
     };
 
-    // Filtrar tareas según el estado
+
     const filteredTodos = todos.filter((todo) => {
         if (filter === 'completed') return todo.status === 'COMPLETADO';
         if (filter === 'incompleted') return todo.status === 'PENDIENTE';
@@ -108,7 +108,7 @@ const TodoWrapper = () => {
                                 key={todo.id}
                                 task={todo}
                                 deleteTodo={deleteTodo}
-                                editTodo={editTodo} // Cambiar estado para habilitar edición
+                                editTodo={editTodo}
                                 toggleComplete={toggleComplete}
                             />
                         )
