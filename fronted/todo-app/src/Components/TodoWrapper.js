@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import TodoForms from './TodoForms';
 import Todo from './Todo';
 import { EditTodoForm } from './EditTodoForm';
-import axios from 'axios'; // Importa axios
+import axios from 'axios';
 
 const TodoWrapper = () => {
     const [todos, setTodos] = useState([]);
@@ -11,8 +11,8 @@ const TodoWrapper = () => {
     // Función para obtener tareas desde la API
     const fetchTodos = async () => {
         try {
-            const response = await axios.get('/api/tasks/status/all'); // Cambia según la ruta que necesites
-            setTodos(response.data);
+            const response = await axios.get('/api/tasks'); // Cambia según la ruta que necesites
+            setTodos(response.data.map((todo) => ({ ...todo, isEditing: false }))); // Añadir 'isEditing' a cada tarea
         } catch (error) {
             console.error('Error fetching tasks:', error);
         }
@@ -23,20 +23,18 @@ const TodoWrapper = () => {
     }, []);
 
     const addTodo = async (todo) => {
-        console.log('Intentando agregar una nueva tarea:', todo); // Muestra lo que estás tratando de agregar
         try {
             const response = await axios.post('/api/tasks', todo);
-            console.log('Tarea agregada:', response.data); // Muestra la tarea que fue agregada
-            setTodos([...todos, response.data]);
+            setTodos([...todos, { ...response.data, isEditing: false }]);
         } catch (error) {
-            console.error('Error agregando tarea:', error); // Muestra el error en caso de que ocurra
+            console.error('Error agregando tarea:', error);
         }
     };
 
     const deleteTodo = async (id) => {
         try {
-            await axios.delete(`/api/tasks/${id}`); // Elimina la tarea
-            setTodos(todos.filter((todo) => todo.id !== id)); // Actualiza la lista de tareas
+            await axios.delete(`/api/tasks/${id}`);
+            setTodos(todos.filter((todo) => todo.id !== id));
         } catch (error) {
             console.error('Error deleting task:', error);
         }
@@ -47,7 +45,7 @@ const TodoWrapper = () => {
         const updatedTask = { ...todoToToggle, status: todoToToggle.status === 'PENDIENTE' ? 'COMPLETADO' : 'PENDIENTE' };
 
         try {
-            await axios.put(`/api/tasks/${id}`, updatedTask); // Actualiza la tarea en la API
+            await axios.put(`/api/tasks/${id}`, updatedTask);
             setTodos(
                 todos.map((todo) =>
                     todo.id === id ? { ...todo, status: updatedTask.status } : todo
@@ -58,21 +56,29 @@ const TodoWrapper = () => {
         }
     };
 
-    const editTask = async (updatedTask, id) => {
+    const editTodo = (id) => {
+        setTodos(
+            todos.map((todo) =>
+                todo.id === id ? { ...todo, isEditing: !todo.isEditing } : todo
+            )
+        );
+    };
+
+    const updateTask = async (updatedTask, id) => {
         try {
-            await axios.put(`/api/tasks/${id}`, updatedTask); // Envía la tarea actualizada a la API
+            await axios.put(`/api/tasks/${id}`, updatedTask);
             setTodos(
                 todos.map((todo) =>
-                    todo.id === id ? { ...todo, ...updatedTask, isEditing: !todo.isEditing } : todo
+                    todo.id === id ? { ...todo, ...updatedTask, isEditing: false } : todo
                 )
             );
         } catch (error) {
-            console.error('Error editing task:', error);
+            console.error('Error updating task:', error);
         }
     };
 
     // Filtrar tareas según el estado
-    const filteredTodos = todos.filter(todo => {
+    const filteredTodos = todos.filter((todo) => {
         if (filter === 'completed') return todo.status === 'COMPLETADO';
         if (filter === 'incompleted') return todo.status === 'PENDIENTE';
         return true; // Para 'all'
@@ -96,13 +102,13 @@ const TodoWrapper = () => {
                 <div className="tasks-container">
                     {filteredTodos.map((todo) =>
                         todo.isEditing ? (
-                            <EditTodoForm key={todo.id} editTodo={editTask} task={todo} />
+                            <EditTodoForm key={todo.id} editTodo={updateTask} task={todo} />
                         ) : (
                             <Todo
                                 key={todo.id}
                                 task={todo}
                                 deleteTodo={deleteTodo}
-                                editTodo={editTask}
+                                editTodo={editTodo} // Cambiar estado para habilitar edición
                                 toggleComplete={toggleComplete}
                             />
                         )

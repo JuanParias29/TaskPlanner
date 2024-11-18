@@ -57,4 +57,8 @@ public class TaskService {
     public List<Task> getTasksByStatus(TaskStatus status) {
         return taskRepository.findByStatus(status);
     }
+    // Metodo para obtener todas las tareas
+    public List<Task> getAllTasks() {
+        return taskRepository.findAll();  // Usamos el findAll() de JpaRepository
+    }
 }

@@ -8,21 +8,31 @@
   box-sizing: border-box;
 }
 
-/* Estilo general del cuerpo de la página */
 body {
-  background-image: url("https://static.vecteezy.com/system/resources/previews/013/151/035/non_2x/light-blue-and-purple-gradient-background-free-vector.jpg"); /* Fondo con degradado */
+  background-image: url("https://static.vecteezy.com/system/resources/previews/013/151/035/non_2x/light-blue-and-purple-gradient-background-free-vector.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  justify-content: center;  /* Centra el contenido horizontalmente */
+  align-items: center;      /* Centra el contenido verticalmente */
   height: 100vh;
   padding-top: 20px;
+  margin: 0;
+  overflow-x: hidden;
 }
+
+
 
 /* Contenedor principal de la aplicación */
 .TodoWrapper {
   display: flex;
+  justify-content: center; /* Centra el contenido */
+  align-items: center;     /* Centra verticalmente */
+  width: 100%;
   height: 100vh;
 }
+
 
 /* Estilo del contenedor izquierdo */
 .left-container {
@@ -33,6 +43,7 @@ body {
   left: 50px;
   top: 200px;
 }
+
 
 /* Estilo del contenedor derecho */
 .right-container {
@@ -45,6 +56,7 @@ body {
   top: 20px;
   width: 1000px;
 }
+
 
 /* Contenedor de las tareas */
 .tasks-container {
@@ -62,25 +74,26 @@ h1 {
   margin-bottom: 30px;
 }
 
-/* Contenedor de cada tarea individual */
 .Todo {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  width: 100%;
-  max-width: 100%;
+  width: 90%; /* Reducir el ancho para dejar espacio a la izquierda */
+  max-width: 90%;
   padding: 15px;
   background-color: #f6f0ff;
-  margin: 10px 0;
+  margin: 10px auto; /* Centrar horizontalmente */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   position: relative;
 }
 
+
+
 /* Contenedor de acciones de la tarea (editar, eliminar) */
 .task-actions {
   display: flex;
-  align-items: center;
+  align-items: end;
 }
 
 /* Estilo del texto de la tarea */
