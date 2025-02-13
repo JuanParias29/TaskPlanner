@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 
 const TodoForms = ({ addTodo }) => {
-    const [title, setTitle] = useState('');  // Nombre de la tarea
-    const [description, setDescription] = useState('');  // Descripción de la tarea
-    const [status, setStatus] = useState('PENDIENTE');  // Estado de la tarea, por defecto 'PENDIENTE'
-
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
+    const [status, setStatus] = useState('PENDIENTE');
     const handleSubmit = (e) => {
         e.preventDefault();
         if (title && description && status) {
-            // Añadir la tarea con su descripción y estado
+
             addTodo({ title, description, status });
-            // Limpiar los campos
+
             setTitle('');
             setDescription('');
             setStatus('PENDIENTE');

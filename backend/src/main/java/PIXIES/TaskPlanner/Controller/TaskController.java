@@ -1,6 +1,7 @@
 package PIXIES.TaskPlanner.Controller;
 
 import PIXIES.TaskPlanner.Entity.Task;
+import PIXIES.TaskPlanner.Repository.TaskRepository;
 import PIXIES.TaskPlanner.Entity.TaskStatus;
 import PIXIES.TaskPlanner.Services.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.DayOfWeek;
 import java.util.List;
 
 @RestController
@@ -48,5 +50,10 @@ public class TaskController {
         }
         List<Task> tasks = taskService.getTasksByStatus(taskStatus);
         return ResponseEntity.ok(tasks);
+    }
+
+    @GetMapping
+    public List<Task> getAllTasks() {
+        return taskService.getAllTasks();
     }
 }

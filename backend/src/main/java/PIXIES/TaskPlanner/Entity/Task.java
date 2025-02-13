@@ -3,10 +3,8 @@ package PIXIES.TaskPlanner.Entity;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import java.time.DayOfWeek;
 
-/**
- * Clase que representa una tarea en la aplicación de planificación de tareas.
- */
 @Entity
 @Data
 @NoArgsConstructor
@@ -20,17 +18,5 @@ public class Task {
     private String description;
 
     @Enumerated(EnumType.STRING)
-    private TaskStatus status = TaskStatus.PENDIENTE; // Enum para el estado de la tarea (PENDIENTE o COMPLETADA), por defecto PENDIENTE
-
-    /*
-    Posibles funcionalidades futuras:
-    private String priority;
-    private String date;
-    private String category;
-     */
-
-    /*@ManyToOne
-    @JoinColumn(name = "user")
-    private Zone zone;
-    */
+    private TaskStatus status = TaskStatus.PENDIENTE;
 }
