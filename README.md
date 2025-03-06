@@ -1,16 +1,7 @@
 # 📝 Proyecto: Lista de Tareas con Análisis de Productividad
 
 ## 📌 Descripción
-Este proyecto es una aplicación de lista de tareas con funcionalidades avanzadas como autenticación de usuarios, filtrado de tareas y análisis de productividad. Fue desarrollado utilizando **metodología ágil (Scrum)** y gestionado en GitHub mediante **milestones, issues y pull requests**.
-
-El objetivo de este repositorio es proporcionar una guía práctica sobre cómo diseñar un proyecto de desarrollo de software siguiendo buenas prácticas de gestión y colaboración en GitHub.
-
-## 🎯 Objetivos del Proyecto
-- Aplicar metodologías ágiles en el desarrollo de software.
-- Diseñar una arquitectura modular basada en **MVC** (Modelo-Vista-Controlador).
-- Implementar una aplicación con **backend en Spring Boot** y **frontend en React**.
-- Gestionar tareas y colaboraciones en **GitHub Projects**.
-- Aplicar **CI/CD** con GitHub Actions y Docker.
+Este proyecto es una aplicación de lista de tareas con funcionalidades avanzadas como autenticación de usuarios, filtrado de tareas y análisis de productividad. 
 
 ## 🛠 Tecnologías Utilizadas
 - Java con Spring Boot
