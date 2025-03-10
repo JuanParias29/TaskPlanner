@@ -137,3 +137,5 @@ class TaskServiceTest {
         verify(taskRepository, times(1)).findByStatus(TaskStatus.COMPLETADO);
     }
 }
+
+// ejemplod e commit enlazado a issue
